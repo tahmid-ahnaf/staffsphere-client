@@ -1,20 +1,49 @@
-import { createBrowserRouter} from "react-router-dom";
-import Root from "../layout/Root";
+import {
+  createBrowserRouter,
+} from "react-router-dom";
+import Main from "../layout/Main";
 import Home from "../Pages/Home/Home";
+// import PrivateRoute from "./PrivateRoute";
 
-const router = createBrowserRouter([
+
+export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
-    // errorElement: <ErrorPage></ErrorPage>,
+    element: <Main></Main>,
     children: [
-        {
-            path:"/",
-            element:<Home></Home>,
-            loader: () => fetch('')
-        },
-    ],
+      {
+          path: '/',
+          element: <Home></Home>
+      }, 
+      {
+        path: 'login',
+        // element: <Login></Login>
+      },
+      {
+        path: 'signup',
+        // element: <SignUp></SignUp>
+      },
+      {
+        path: 'secret',
+        // element: <PrivateRoute><Secret></Secret></PrivateRoute>
+      }
+    ]
   },
-]);
+  {
+    path: 'dashboard',
+    // element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+        path: 'cart',
+        // element: <Cart></Cart>
+      },
 
-export default router;
+      // admin routes
+      {
+        path: 'users',
+        // element: <AllUsers></AllUsers>
+      }
+
+    ]
+  }
+]);
