@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import Worksheet from "../Pages/Dashboard/Worksheet/Worksheet";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import EmployeeList from "../Pages/Dashboard/EmployeeList/EmployeeList";
+import EmployeeDetails from "../Pages/Dashboard/EmployeeDetails/EmployeeDetails";
 
 
 export const router = createBrowserRouter([
@@ -54,6 +55,12 @@ export const router = createBrowserRouter([
         path: 'employee-list',
         element: <EmployeeList></EmployeeList>
       },
+
+      {
+          path: 'details/:email',
+          element: <EmployeeDetails></EmployeeDetails>,
+          
+        },
 
       // admin only routes
       // {
