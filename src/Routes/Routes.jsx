@@ -8,6 +8,8 @@ import Login from "../Pages/Login/Login";
 import Dashboard from "../layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Worksheet from "../Pages/Dashboard/Worksheet/Worksheet";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import EmployeeList from "../Pages/Dashboard/EmployeeList/EmployeeList";
 
 
 export const router = createBrowserRouter([
@@ -41,6 +43,16 @@ export const router = createBrowserRouter([
       {
         path: 'work-sheet',
         element: <Worksheet></Worksheet>
+      },
+
+      {
+        path: 'payment-history',
+        element: <PaymentHistory></PaymentHistory>
+      },
+
+      {
+        path: 'employee-list',
+        element: <EmployeeList></EmployeeList>
       },
 
       // admin only routes

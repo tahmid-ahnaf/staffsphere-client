@@ -1,10 +1,11 @@
 import { Button, Card, Table , Label, TextInput,Select, Datepicker  } from "flowbite-react";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Worksheet = () => {
 
     return (
-        <div>
-        <h2 className="text-4xl mb-8">Work Sheet</h2>
+        <div className="">
+        <SectionTitle heading="Work Sheet"></SectionTitle>
             <Card className="mb-8">
       <form className="flex items-center gap-4">
       <div className="max-w-md">

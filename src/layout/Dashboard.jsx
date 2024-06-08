@@ -44,7 +44,7 @@ const Dashboard = () => {
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>
-    <div className="">
+    <div className="mx-auto">
                 <Outlet></Outlet>
             </div>
         </div>
