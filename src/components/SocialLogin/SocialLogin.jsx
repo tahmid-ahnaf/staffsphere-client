@@ -16,7 +16,7 @@ const SocialLogin = () => {
             const userInfo = {
                 email: result.user?.email,
                 name: result.user?.displayName,
-                role: ""
+                role: "Employee",
             }
             axiosPublic.post('/users', userInfo)
             .then(res =>{
@@ -27,9 +27,10 @@ const SocialLogin = () => {
     }
 
     return (
-        <div className="p-8">
+        <div >
             <div className="divider"></div>
-            <div>
+            <div className="flex justify-center items-center flex-col lg:flex-row gap-4">
+            <p>Or Login With</p>
                 <button onClick={handleGoogleSignIn} className="btn">
                     <FaGoogle className="mr-2"></FaGoogle>
                     Google

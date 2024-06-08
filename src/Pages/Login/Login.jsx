@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -80,6 +81,7 @@ const Login = () => {
             Sign Up
           </Link>
         </p>
+        <SocialLogin></SocialLogin>
       </Card>
       <ToastContainer />
     </div>
