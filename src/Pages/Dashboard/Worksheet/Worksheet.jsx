@@ -8,7 +8,7 @@ const Worksheet = () => {
         <SectionTitle heading="Work Sheet"></SectionTitle>
             <Card className="mb-8">
       <form className="flex items-center gap-4">
-      <div className="max-w-md">
+      <div>
       <div className="mb-2 block">
         <Label htmlFor="countries" value="Select task" />
       </div>

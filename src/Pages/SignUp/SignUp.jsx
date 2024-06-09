@@ -134,15 +134,15 @@ const SignUp = () => {
           <div className="mb-2 block">
             <Label htmlFor="email" value="Your email" />
           </div>
-          <TextInput id="email" type="email" placeholder="name@flowbite.com" required />
+          <TextInput id="email" type="email" placeholder="name@staffsphere.com" required />
         </div>
 
         <div className="flex flex-col lg:flex-row gap-4">
 
         <div>
         <Dropdown label={role || "Select your Role"} dismissOnClick={false} required>
-      <Dropdown.Item onClick={() => setRole("Employee")}>Employee</Dropdown.Item>
-      <Dropdown.Item onClick={() => setRole("HR")}>HR</Dropdown.Item>
+      <Dropdown.Item onClick={() => setRole("employee")}>Employee</Dropdown.Item>
+      <Dropdown.Item onClick={() => setRole("hr")}>HR</Dropdown.Item>
     </Dropdown>
         </div>
 

@@ -61,7 +61,7 @@ const Login = () => {
             <TextInput
               id="email"
               type="email"
-              placeholder="name@flowbite.com"
+              placeholder="name@staffsphere.com"
               required
             />
           </div>
