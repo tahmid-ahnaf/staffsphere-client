@@ -7,12 +7,17 @@ import { Button } from "flowbite-react";
 import { MdOutlineDoneOutline } from "react-icons/md";
 import { useState } from "react";
 import { Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import useEmployeeList from "../../../hooks/useEmployeeList";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const EmployeeList = () => {
 
     const [openModal, setOpenModal] = useState(false);
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
+  const [employeeList, refetch] = useEmployeeList();
+  const axiosSecure = useAxiosSecure();
 
   function onCloseModal() {
     setOpenModal(false);
@@ -24,8 +29,24 @@ const EmployeeList = () => {
 
         setOpenModal(true);
 
+    }
 
+    const toggleVerifyStatus = (name, email, status)=> {
 
+      axiosSecure.patch(`/employees/verify?email=${email}&isVerified=${status}`)
+        .then(res =>{
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${name}'s verified status is ${status} now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
 
     }
   return (
@@ -43,21 +64,25 @@ const EmployeeList = () => {
             <Table.HeadCell>Details</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
-            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+          {
+            employeeList.map((employee)=>(
+
+              <Table.Row key={employee._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {'Ahnaf Tahmid'}
+                {employee.name}
               </Table.Cell>
-              <Table.Cell>atahmid928@gmail.com</Table.Cell>
+              <Table.Cell>{employee.email}</Table.Cell>
               <Table.Cell>
-                <Button color="success">
+              {
+                employee.verified === "true" ? <Button onClick={()=>toggleVerifyStatus(employee.name,employee.email, "false")} color="success">
                   <MdOutlineDoneOutline className="h-5 w-5" />
-                </Button>
-                {/* <Button color="failure">
+                </Button>:<Button onClick={()=>toggleVerifyStatus(employee.name,employee.email, "true")} color="failure">
                   <ImCross className="h-5 w-5" />
-                </Button> */}
+                </Button>
+              }
               </Table.Cell>
-              <Table.Cell>2019817787</Table.Cell>
-              <Table.Cell>25000</Table.Cell>
+              <Table.Cell>{employee.bankAccountNo}</Table.Cell>
+              <Table.Cell>{employee.salary}</Table.Cell>
               <Table.Cell>
                 <Button onClick={handlePayModal}>
                   Pay
@@ -70,6 +95,10 @@ const EmployeeList = () => {
                 </Button>
               </Table.Cell>
             </Table.Row>
+
+            ))
+          }
+            
           </Table.Body>
         </Table>
       </div>
