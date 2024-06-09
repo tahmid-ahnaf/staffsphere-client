@@ -31,7 +31,7 @@ const SocialLogin = () => {
             <div className="divider"></div>
             <div className="flex justify-center items-center flex-col lg:flex-row gap-4">
             <p>Or Login With</p>
-                <button onClick={handleGoogleSignIn} className="btn">
+                <button onClick={handleGoogleSignIn} className="btn flex items-center">
                     <FaGoogle className="mr-2"></FaGoogle>
                     Google
                 </button>

@@ -13,6 +13,9 @@ import EmployeeList from "../Pages/Dashboard/EmployeeList/EmployeeList";
 import EmployeeDetails from "../Pages/Dashboard/EmployeeDetails/EmployeeDetails";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import AllEmployeeList from "../Pages/Dashboard/AllEmployeeList/AllEmployeeList";
+import AdminRoute from "./AdminRoute";
+import EmployeeRoute from "./EmployeeRoute";
+import HrRoute from "./HrRoute";
 
 
 export const router = createBrowserRouter([
@@ -49,28 +52,30 @@ export const router = createBrowserRouter([
       // normal user routes
       {
         path: 'work-sheet',
-        element: <Worksheet></Worksheet>
+        element: <EmployeeRoute><Worksheet></Worksheet></EmployeeRoute>
       },
 
       {
         path: 'payment-history',
-        element: <PaymentHistory></PaymentHistory>
+        element: <EmployeeRoute><PaymentHistory></PaymentHistory></EmployeeRoute>
       },
 
       {
         path: 'employee-list',
-        element: <EmployeeList></EmployeeList>
+        element: <HrRoute><EmployeeList></EmployeeList></HrRoute>
       },
 
-      {
-        path: 'all-employee-list',
-        element: <AllEmployeeList></AllEmployeeList>
-      },
+      
 
       {
           path: 'details/:email',
-          element: <EmployeeDetails></EmployeeDetails>,
+          element: <HrRoute><EmployeeDetails></EmployeeDetails></HrRoute>,
           
+        },
+
+        {
+          path: 'all-employee-list',
+          element: <AdminRoute><AllEmployeeList></AllEmployeeList></AdminRoute>
         },
 
       // admin only routes
