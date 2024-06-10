@@ -18,12 +18,14 @@ import EmployeeRoute from "./EmployeeRoute";
 import HrRoute from "./HrRoute";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import Progress from "../Pages/Dashboard/Progress/Progress";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
           path: '/',
@@ -50,6 +52,7 @@ export const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       // normal user routes
       {
