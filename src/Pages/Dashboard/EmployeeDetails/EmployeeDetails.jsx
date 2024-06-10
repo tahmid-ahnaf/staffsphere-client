@@ -1,42 +1,19 @@
 import { Card } from "flowbite-react";
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import useDetails from "../../../hooks/useDetails";
+import { useParams } from "react-router-dom";
 
 
 
 const EmployeeDetails = () => {
 
-    const data = [
-        {
-            month: 'Page A',
-          salary: 2400,
-        },
-        {
-            month: 'Page B',
-          salary: 1398,
-        },
-        {
-            month: 'Page C',
-          salary: 9800,
-        },
-        {
-            month: 'Page D',
-          salary: 3908,
-        },
-        {
-            month: 'Page E',
-          salary: 4800,
+  const {email,name,designation,photoURL} = useParams();
+  console.log(email);
+  const decodedPhotoURL = decodeURIComponent(photoURL);
 
-        },
-        {
-            month: 'Page F',
-          salary: 3800,
-        },
-        {
-            month: 'Page G',
-          salary: 4300,
-          
-        },
-      ];
+  const [details, refetch] = useDetails(email);
+
+    const data = details;
     
     return (
         <div>
@@ -45,12 +22,12 @@ const EmployeeDetails = () => {
             <Card className="mb-8">
       <div className="flex flex-col items-center pb-10">
         <img
-          alt="Bonnie image"
-          src="https://i.ibb.co/P51mzQm/My-DP.jpg"
+          alt="image"
+          src={decodedPhotoURL}
           className="mb-3 rounded-full shadow-lg w-[150px] h-[150px]"
         />
-        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
-        <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
+        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{name}</h5>
+        <span className="text-sm text-gray-500 dark:text-gray-400">{designation}</span>
       </div>
     </Card>
 

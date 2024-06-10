@@ -9,37 +9,29 @@ const Dashboard = () => {
             <Sidebar aria-label="Sidebar with content separator example">
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+          <Sidebar.Item href="/dashboard" icon={HiChartPie}>
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
-            Kanban
+          <Sidebar.Item href="/dashboard/all-employee-list" icon={HiViewBoards}>
+            All Employee List
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox}>
-            Inbox
+          <Sidebar.Item href="/dashboard/employee-list" icon={HiInbox}>
+            Employee List
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
-            Users
+          <Sidebar.Item href="/dashboard/progress" icon={HiShoppingBag}>
+            Progress
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
-            Products
+          <Sidebar.Item href="/dashboard/work-sheet" icon={HiArrowSmRight}>
+            Work Sheet
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          <Sidebar.Item href="/payment-history" icon={HiTable}>
+            Payment History
+          </Sidebar.Item>
+          <Sidebar.Item href="/login" icon={HiArrowSmRight}>
             Sign In
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
+          <Sidebar.Item href="/signup" icon={HiTable}>
             Sign Up
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
-            Upgrade to Pro
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
-            Documentation
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={BiBuoy}>
-            Help
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>

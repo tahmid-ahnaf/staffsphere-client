@@ -72,10 +72,9 @@ export const router = createBrowserRouter([
       },
 
       {
-          path: 'details/:email',
-          element: <HrRoute><EmployeeDetails></EmployeeDetails></HrRoute>,
-          
-        },
+        path: '/dashboard/employee-list/details/:email/:name/:designation/:photoURL',
+        element: <HrRoute><EmployeeDetails></EmployeeDetails></HrRoute>
+      },
 
         {
           path: 'all-employee-list',
@@ -94,7 +93,7 @@ export const router = createBrowserRouter([
       // {
       //   path: 'updateItem/:id',
       //   element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-      //   loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+      //   loader: ({params}) => fetch(`https://b9a12-server-side-tahmid-ahnaf.vercel.app/menu/${params.id}`)
       // },
       // {
       //   path: 'all-employee-list',

@@ -33,8 +33,8 @@ const NavigationBar = () => {
             <span className="block text-sm">{user.displayName}</span>
             <span className="block truncate text-sm font-medium">{user.email}</span>
           </Dropdown.Header>
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Contact Us</Dropdown.Item>
+          <Dropdown.Item><Navbar.Link href="/dashboard">Dashboard</Navbar.Link></Dropdown.Item>
+          <Dropdown.Item><Navbar.Link href="/contact-us">Contact Us</Navbar.Link></Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
         </Dropdown>
@@ -49,11 +49,11 @@ const NavigationBar = () => {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link href="#" active>
+        <Navbar.Link href="/" active>
           Home
         </Navbar.Link>
-        <Navbar.Link href="#">Dashboard</Navbar.Link>
-        <Navbar.Link href="#">Contact Us</Navbar.Link>
+        <Navbar.Link href="/dashboard">Dashboard</Navbar.Link>
+        <Navbar.Link href="/contact-us">Contact Us</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
 

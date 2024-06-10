@@ -11,6 +11,7 @@ import useEmployeeList from "../../../hooks/useEmployeeList";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import PayModal from "../../../components/PayModal/PayModal";
+import { Link } from "react-router-dom";
 
 const EmployeeList = () => {
 
@@ -18,16 +19,9 @@ const EmployeeList = () => {
   const [employeeList, refetch] = useEmployeeList();
   const axiosSecure = useAxiosSecure();
   const [openModal, setOpenModal] = useState(false);
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
   const [salary,setSalary] = useState('');
   const [paidToEmail, setPaidToEmail] = useState('');
 
-  function onCloseModal() {
-    setOpenModal(false);
-    setMonth('');
-    setYear('');
-  }
 
     const handlePayModal = (email, salary) =>{
 
@@ -101,9 +95,11 @@ const EmployeeList = () => {
                 
               </Table.Cell>
               <Table.Cell>
-              <Button>
-                  Details
-                </Button>
+              <Link to={`details/${employee.email}/${employee.name}/${employee.designation}/${encodeURIComponent(employee.photoURL)}`}>
+            <Button>
+                Details
+              </Button>
+            </Link>
               </Table.Cell>
             </Table.Row>
 
