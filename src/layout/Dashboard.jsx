@@ -9,6 +9,9 @@ const Dashboard = () => {
             <Sidebar aria-label="Sidebar with content separator example">
       <Sidebar.Items>
         <Sidebar.ItemGroup>
+        <Sidebar.Item href="/" icon={HiChartPie}>
+            Home
+          </Sidebar.Item>
           <Sidebar.Item href="/dashboard" icon={HiChartPie}>
             Dashboard
           </Sidebar.Item>
