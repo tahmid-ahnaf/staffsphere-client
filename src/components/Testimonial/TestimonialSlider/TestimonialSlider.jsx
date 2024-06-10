@@ -7,13 +7,14 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import './styles.css';
-
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 
-const TestimonialSlider = () => {
+const TestimonialSlider = ({sliderData}) => {
+
+   console.log(sliderData);
     return (
-        <>
+        <div className='mb-8'>
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
@@ -28,37 +29,17 @@ const TestimonialSlider = () => {
         }}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
-        className="mySwiper h-[75vh] max-w-[80%]"
+        className="mySwiper h-screen max-w-[80%]"
       >
-        <SwiperSlide>
-          <Testimonial></Testimonial>
+      {
+        sliderData.map((slider)=>(
+          <SwiperSlide key={slider.id}>
+          <Testimonial slider={slider}></Testimonial>
         </SwiperSlide>
-        <SwiperSlide>
-        <Testimonial></Testimonial>
-        </SwiperSlide>
-        <SwiperSlide>
-        <Testimonial></Testimonial>
-        </SwiperSlide>
-        <SwiperSlide>
-        <Testimonial></Testimonial>
-        </SwiperSlide>
-        <SwiperSlide>
-        <Testimonial></Testimonial>
-        </SwiperSlide>
-        <SwiperSlide>
-        <Testimonial></Testimonial>
-        </SwiperSlide>
-        <SwiperSlide>
-        <Testimonial></Testimonial>
-        </SwiperSlide>
-        <SwiperSlide>
-        <Testimonial></Testimonial>
-        </SwiperSlide>
-        <SwiperSlide>
-        <Testimonial></Testimonial>
-        </SwiperSlide>
+        ))
+      }
       </Swiper>
-    </>
+    </div>
     );
 };
 

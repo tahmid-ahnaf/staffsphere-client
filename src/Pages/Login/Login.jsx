@@ -40,7 +40,7 @@ const Login = () => {
   return (
     <div className="flex flex-col md:flex-row mt-20 mb-20 justify-center gap-8 mx-auto max-w-[90%] ">
       <Helmet>
-        <title>Register</title>
+        <title>Sign In</title>
       </Helmet>
       <div className="flex items-center ">
         <img

@@ -1,0 +1,49 @@
+[
+    {
+        "id": 1,
+        "imageURL": "https://i.ibb.co/P51mzQm/My-DP.jpg",
+        "name": "John Doe",
+        "designation": "Employee",
+        "reviewText": "The user-friendly interface of the website made it easy for me to submit my work records and track my hours. It's a great tool for managing my tasks and time."
+      },
+
+      {
+        "id": 2,
+        "imageURL": "https://i.ibb.co/48T7DBx/image.png",
+        "name": "Jane Smith",
+        "designation": "HR",
+        "reviewText": "As an HR manager, the ability to process payments and manage employee lists efficiently has been a game-changer. The filtering and sorting options are particularly helpful."
+      },
+
+      {
+        "id": 3,
+        "imageURL": "https://i.ibb.co/P51mzQm/My-DP.jpg",
+        "name": "Robert Johnson",
+        "designation": "Admin",
+        "reviewText": "The admin control panel gives me comprehensive oversight of all employee activities. Adjusting salaries and managing roles is straightforward and secure."
+      },
+
+      {
+        "id": 4,
+        "imageURL": "https://i.ibb.co/48T7DBx/image.png",
+        "name": "Emily Williams",
+        "designation": "Employee",
+        "reviewText": "I appreciate the transparency of the payment history feature. It's reassuring to see my salary records and know that duplicate payments are prevented."
+      },
+
+      {
+        "id": 5,
+        "imageURL": "https://i.ibb.co/P51mzQm/My-DP.jpg",
+        "name": "Michael Brown",
+        "designation": "HR",
+        "reviewText": "The contact us page has streamlined our communication with potential employees and partners. It's a simple yet effective way to engage with our audience."
+      },
+
+      {
+        "id": 6,
+        "imageURL": "https://i.ibb.co/48T7DBx/image.png",
+        "name": "Sarah Davis",
+        "designation": "Admin",
+        "reviewText": "Secure data handling is a top priority for us, and the use of environment variables for sensitive information gives me peace of mind that our data is protected."
+      }
+]

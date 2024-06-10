@@ -18,8 +18,8 @@ const FooterComp = () => {
             <div>
               <Footer.Title title="about" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Flowbite</Footer.Link>
-                <Footer.Link href="#">Tailwind CSS</Footer.Link>
+                <Footer.Link href="/">Staffsphere</Footer.Link>
+                <Footer.Link href="/contact-us">Contact Us</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
