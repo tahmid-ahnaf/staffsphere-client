@@ -17,6 +17,7 @@ import AdminRoute from "./AdminRoute";
 import EmployeeRoute from "./EmployeeRoute";
 import HrRoute from "./HrRoute";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import Progress from "../Pages/Dashboard/Progress/Progress";
 
 
 export const router = createBrowserRouter([
@@ -74,6 +75,11 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/employee-list/details/:email/:name/:designation/:photoURL',
         element: <HrRoute><EmployeeDetails></EmployeeDetails></HrRoute>
+      },
+
+      {
+        path: 'progress',
+        element: <HrRoute><Progress></Progress></HrRoute>
       },
 
         {

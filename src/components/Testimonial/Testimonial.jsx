@@ -12,7 +12,7 @@ const Testimonial = ({slider}) => {
         />
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{slider.name}</h5>
         <span className="text-sm text-gray-500 dark:text-gray-400">{slider.designation}</span>
-        <p className='text-sm '>{slider.reviewText}</p>
+        <p className='text-sm mt-2 '>{slider.reviewText}</p>
       </div>
     </Card>
     );
