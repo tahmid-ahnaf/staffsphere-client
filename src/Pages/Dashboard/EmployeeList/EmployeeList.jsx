@@ -6,18 +6,22 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { Button } from "flowbite-react";
 import { MdOutlineDoneOutline } from "react-icons/md";
 import { useState } from "react";
-import { Checkbox, Label, Modal, TextInput } from "flowbite-react";
+
 import useEmployeeList from "../../../hooks/useEmployeeList";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import PayModal from "../../../components/PayModal/PayModal";
 
 const EmployeeList = () => {
 
-    const [openModal, setOpenModal] = useState(false);
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
+    
   const [employeeList, refetch] = useEmployeeList();
   const axiosSecure = useAxiosSecure();
+  const [openModal, setOpenModal] = useState(false);
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
+  const [salary,setSalary] = useState('');
+  const [paidToEmail, setPaidToEmail] = useState('');
 
   function onCloseModal() {
     setOpenModal(false);
@@ -25,9 +29,11 @@ const EmployeeList = () => {
     setYear('');
   }
 
-    const handlePayModal = () =>{
+    const handlePayModal = (email, salary) =>{
 
         setOpenModal(true);
+        setSalary(salary);
+        setPaidToEmail(email);
 
     }
 
@@ -83,10 +89,16 @@ const EmployeeList = () => {
               <Table.Cell>{employee.bankAccountNo}</Table.Cell>
               <Table.Cell>{employee.salary}</Table.Cell>
               <Table.Cell>
-                <Button onClick={handlePayModal}>
+              {
+                employee.verified ==="true" ? <Button onClick={()=>handlePayModal(employee.email, employee.salary)}>
+                  Pay
+                  <HiOutlineArrowRight className="ml-2 h-5 w-5" />
+                </Button> : <Button disabled>
                   Pay
                   <HiOutlineArrowRight className="ml-2 h-5 w-5" />
                 </Button>
+              }
+                
               </Table.Cell>
               <Table.Cell>
               <Button>
@@ -101,56 +113,9 @@ const EmployeeList = () => {
           </Table.Body>
         </Table>
       </div>
-      <Modal show={openModal} size="md" onClose={onCloseModal} popup>
-        <Modal.Header />
-        <Modal.Body>
-          <div className="space-y-6">
-            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Payment Details</h3>
-            
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="salary" value="Salary" />
-              </div>
-              <TextInput
-                id="salary"
-                defaultValue={"25000"}
-                required
-                disabled
-              />
-            </div>
 
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="month" value="Salary Month" />
-              </div>
-              <TextInput
-                id="month"
-                placeholder="Name of month"
-                value={month}
-                onChange={(event) => setMonth(event.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="year" value="Salary Year" />
-              </div>
-              <TextInput
-                id="Year"
-                placeholder="Year"
-                value={year}
-                onChange={(event) => setYear(event.target.value)}
-                required
-              />
-            </div>
-
-            <Button onClick={() => setOpenModal(false)}>
-                Pay
-              </Button>
-            
-          </div>
-        </Modal.Body>
-      </Modal>
+      <PayModal paidToEmail={paidToEmail} salary={salary} openModal={openModal} setOpenModal={setOpenModal}></PayModal>
+      
     </div>
   );
 };

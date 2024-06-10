@@ -16,6 +16,7 @@ import AllEmployeeList from "../Pages/Dashboard/AllEmployeeList/AllEmployeeList"
 import AdminRoute from "./AdminRoute";
 import EmployeeRoute from "./EmployeeRoute";
 import HrRoute from "./HrRoute";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -65,7 +66,10 @@ export const router = createBrowserRouter([
         element: <HrRoute><EmployeeList></EmployeeList></HrRoute>
       },
 
-      
+      {
+        path: '/dashboard/employee-list/payment/:salary/:month/:year/:email',
+        element: <HrRoute><Payment></Payment></HrRoute>
+      },
 
       {
           path: 'details/:email',
