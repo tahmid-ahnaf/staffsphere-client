@@ -69,7 +69,7 @@ const AllEmployeeList = () => {
           }
         });
       };
-      const handleUpdateSalary = async (id) => {
+      const handleUpdateSalary = async (email) => {
         const { value: salary } = await Swal.fire({
             title: "Update the salary",
             input: "text",
@@ -77,7 +77,29 @@ const AllEmployeeList = () => {
             showCancelButton: true,
           });
           if (salary) {
-            Swal.fire(`Entered email: ${salary}`);
+            axiosSecure.patch(`/updateSalary?email=${email}&newSalary=${parseInt(salary)}`)
+        .then(res =>{
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
+                    icon: "success",
+                    title: `Salary Updated`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+            else{
+
+              Swal.fire({
+                icon: "error",
+                title: `You cannot decrease the salary`,
+                showConfirmButton: false,
+                timer: 1500
+              });
+
+            }
+        })
           }
       };
     return (
@@ -119,7 +141,7 @@ const AllEmployeeList = () => {
               </Table.Cell>
               
               <Table.Cell>
-                <Button onClick={handleUpdateSalary}>
+                <Button onClick={()=>handleUpdateSalary(user.email)}>
                   Update Salary
                   <HiOutlineArrowRight className="ml-2 h-5 w-5" />
                 </Button>

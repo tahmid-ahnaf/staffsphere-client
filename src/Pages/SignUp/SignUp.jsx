@@ -83,9 +83,10 @@ const SignUp = () => {
                             email: email,
                             role:role,
                             bankAccountNo:bankAccountNo,
-                            salary:salary,
+                            salary:parseInt(salary),
                             designation: designation,
                             photoURL: photoURL,
+                            verified:"false",
                             
                         }
                         axiosPublic.post('/users', userInfo)
