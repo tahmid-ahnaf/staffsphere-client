@@ -39,7 +39,6 @@ const EmployeeList = () => {
             if(res.data.modifiedCount > 0){
                 refetch();
                 Swal.fire({
-                    position: "top-end",
                     icon: "success",
                     title: `${name}'s verified status is ${status} now!`,
                     showConfirmButton: false,

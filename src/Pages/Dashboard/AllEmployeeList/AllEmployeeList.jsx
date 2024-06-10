@@ -3,9 +3,14 @@ import SectionTitle from '../../../components/SectionTitle/SectionTitle';
 import { Table,Button } from "flowbite-react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Swal from 'sweetalert2';
+import useVerifiedList from '../../../hooks/useVerifiedList';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AllEmployeeList = () => {
-    const handleMakeHR = (id) => {
+  const [verifiedList, refetch] = useVerifiedList();
+  const axiosSecure = useAxiosSecure();
+
+    const handleMakeHR = (name,email) => {
         Swal.fire({
           title: "Are you sure?",
           text: "You won't be able to revert this!",
@@ -16,22 +21,21 @@ const AllEmployeeList = () => {
           confirmButtonText: "Yes, change to HR!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`https://swapitright-server.vercel.app/queries/${id}`, {
-              method: "DELETE",
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                if (data.deletedCount > 0) {
-                  Swal.fire({
-                    title: "Deleted!",
-                    text: "Your query has been deleted.",
+
+            axiosSecure.patch(`/employees/makeHr?email=${email}`)
+        .then(res =>{
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
                     icon: "success",
+                    title: `${name} is a HR now!`,
+                    showConfirmButton: false,
+                    timer: 1500
                   });
-    
-                //   const remaining = myQueries.filter((item) => item._id !== id);
-                //   setMyQueries(remaining);
-                }
-              });
+            }
+        })
+
           }
         });
       };
@@ -91,18 +95,24 @@ const AllEmployeeList = () => {
             <Table.HeadCell>Fire</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
-            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+          {
+            verifiedList.map((user)=>(
+
+              <Table.Row key={user._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {'Ahnaf Tahmid'}
+                {user.name}
               </Table.Cell>
-              <Table.Cell>Marketing Executive</Table.Cell>
-              <Table.Cell>Employee</Table.Cell>
-              <Table.Cell>25000</Table.Cell>
+              <Table.Cell>{user.designation}</Table.Cell>
+              <Table.Cell>{user.role}</Table.Cell>
+              <Table.Cell>{user.salary}</Table.Cell>
               <Table.Cell>
-                <Button onClick={handleMakeHR}>
+              {
+                user.role==="hr" ? "":<Button onClick={()=>handleMakeHR(user.name,user.email)}>
                   Change Role To HR
                   <HiOutlineArrowRight className="ml-2 h-5 w-5" />
                 </Button>
+              }
+                
                 {/* <Button color="failure">
                   <ImCross className="h-5 w-5" />
                 </Button> */}
@@ -124,6 +134,10 @@ const AllEmployeeList = () => {
                 </Button>
               </Table.Cell>
             </Table.Row>
+
+            ))
+          }
+            
           </Table.Body>
         </Table>
       </div>
